@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mydemoapp/views/calculator_view.dart';
 import 'package:mydemoapp/views/home_views.dart';
 
 class MyApp extends StatelessWidget {
@@ -6,7 +7,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My Flutter App',
-      home: const HomeViews(),
+      home: const CalculatorView(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
         appBarTheme: AppBarTheme(
