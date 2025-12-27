@@ -8,10 +8,19 @@ class HomeViews extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Home Page'),
-          
+
         ),
-        body: Center(
-          child: Text('Hello, World!'),
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue.shade200, Colors.purple.shade200],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: Center(
+            child: Text('Hello, World!', style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: Colors.white),),
+          ),
         ),
       );
   }

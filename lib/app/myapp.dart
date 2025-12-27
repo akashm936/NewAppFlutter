@@ -6,13 +6,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My Flutter App',
-      home: HomeViews(),
+      home: const HomeViews(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.indigo.shade300,
           foregroundColor: Colors.white,
         ),
+      
       ),
     );
   }
