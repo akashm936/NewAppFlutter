@@ -1,25 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-class CalculatorView extends StatelessWidget {
-  const CalculatorView({super.key});
+class CalculatorView extends StatefulWidget {
+  
+
+  CalculatorView({super.key, });
+
+  @override
+  State<CalculatorView> createState() => _CalculatorViewState();
+}
+
+class _CalculatorViewState extends State<CalculatorView> {
+  int num1 = 0;
+  int num2 = 0;
+  double result = 0.0;
+
+  final TextEditingController _firstNumberController = TextEditingController();
+  final TextEditingController _secondNumberController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _firstNumberController.text = num1.toString();
+    _secondNumberController.text = num2.toString();
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 60.0),
+        padding: EdgeInsets.only(top: 60.0),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: TextField(
+                controller: _firstNumberController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   hintText: "Enter First Number",
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      width: 3,
+                      width: 1,
                       color: Colors.indigo.shade300,
                     ),
                     borderRadius: BorderRadius.circular(8.0),
@@ -35,16 +59,19 @@ class CalculatorView extends StatelessWidget {
                 ),
               ),
             ),
+
             SizedBox(height: 20),
+
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: TextField(
+                controller: _secondNumberController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   hintText: "Enter Second Number",
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      width: 3,
+                      width: 1,
                       color: Colors.indigo.shade300,
                     ),
                     borderRadius: BorderRadius.circular(8.0),
@@ -60,52 +87,81 @@ class CalculatorView extends StatelessWidget {
                 ),
               ),
             ),
+
+
             SizedBox(height: 20),
+
+
             Text(
-              "0",
+              "$result",
               style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
             ),
+
+
             SizedBox(height: 20),
+
+
             Spacer(),
+
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                   setState(() {
+                     result = double.parse(_firstNumberController.text) + double.parse(_secondNumberController.text);
+                   });
+                  },
                   backgroundColor: Colors.indigo.shade300,
                   child: Icon(Icons.add,color: Colors.white,),
                 ),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                   setState(() {
+                     result = double.parse(_firstNumberController.text) - double.parse(_secondNumberController.text);
+                   });
+                  },
                   backgroundColor: Colors.indigo.shade300,
                   child: Icon(Icons.remove,color: Colors.white,   ),
                 ),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      result = double.parse(_firstNumberController.text) * double.parse(_secondNumberController.text);
+                    });
+                  },
                   backgroundColor: Colors.indigo.shade300,
                   child: Icon(CupertinoIcons.multiply,color: Colors.white,),
                 ),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      result = double.parse(_firstNumberController.text) / double.parse(_secondNumberController.text);
+                    });
+                  },
                   backgroundColor: Colors.indigo.shade300,
                   child: Icon(CupertinoIcons.divide,color: Colors.white,),
                 ),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      num1 = 0;
+                      num2 = 0;
+                      result = 0;
+                      _firstNumberController.clear();
+                      _secondNumberController.clear();
+                    });
+                  },
                   backgroundColor: Colors.indigo.shade300,
                   child: Text("C",style: TextStyle(fontSize: 20,color: Colors.white,),),
                 ),
               ],
             ),
+
+
             SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-        
-              children: [
-                
-              ],
-            ),
-            SizedBox(height: 40),
+            
           ],
         ),
       ),

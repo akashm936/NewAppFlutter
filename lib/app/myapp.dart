@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My Flutter App',
-      home: const CalculatorView(),
+      home: CalculatorView(),
       themeMode: ThemeMode.light,
       theme: ThemeData(
         appBarTheme: AppBarTheme(
